@@ -35,7 +35,7 @@
 -- geaccepteerd. Test deze regel en neem de gegooide foutmelding op als
 -- commentaar in de uitwerking.
 ALTER TABLE medewerkers ADD COLUMN geslacht char(1);
-ALTER TABLE medewerkers ADD CONSTRAINT m_geslacht_chk CHECK (geslacht IN ('M', 'V'));
+ALTER TABLE medewerkers ADD CONSTRAINT m_geslacht_chk CHECK(geslacht IN ('M', 'V'));
 --ERROR:  new row for relation "medewerkers" violates check constraint "m_geslacht_chk"
 --DETAIL:  Failing row contains (7369, SMIT, N, TRAINER, 7902, 1985-12-17, 800.00, null, 20, l).
 --SQL state: 23514
@@ -106,6 +106,8 @@ INSERT INTO adressen VALUES ('2520FI', '13a', '1990-02-10', '2050-10-10', 064379
 -- De commissie van een medewerker (kolom `comm`) moet een bedrag bevatten als de medewerker een functie als
 -- 'VERKOPER' heeft, anders moet de commissie NULL zijn. Schrijf hiervoor een beperkingsregel. Gebruik onderstaande
 -- 'illegale' INSERTs om je beperkingsregel te controleren.
+ALTER TABLE medewerkers
+    ADD CONSTRAINT m_comm_check CHECK (functie = 'VERKOPER' AND comm IS NOT NULL OR functie != 'VERKOPER' AND comm IS NULL);
 
 INSERT INTO medewerkers (mnr, naam, voorl, functie, chef, gbdatum, maandsal, comm)
 VALUES (8001, 'MULLER', 'TJ', 'TRAINER', 7566, '1982-08-18', 2000, 500);
