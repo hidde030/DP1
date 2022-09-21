@@ -1,5 +1,7 @@
 package org.example.p2;
 
+import org.example.p3.Adres;
+
 import java.sql.Date;
 
 public class Reiziger {
@@ -8,7 +10,7 @@ public class Reiziger {
     private String tussenvoegsel;
     private String achternaam;
     private Date geboortedatum;
-
+    private Adres adres;
     public Reiziger(int reiziger_id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {
         this.reiziger_id = reiziger_id;
         this.voorletters = voorletters;
@@ -18,7 +20,15 @@ public class Reiziger {
 
 
     }
+    public Reiziger(int reiziger_id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum,    Adres ad) {
+        this.reiziger_id = reiziger_id;
+        this.voorletters = voorletters;
+        this.tussenvoegsel = tussenvoegsel;
+        this.achternaam = achternaam;
+        this.geboortedatum = geboortedatum;
+        this.adres = ad;
 
+    }
     public int getReiziger_id() {
         return reiziger_id;
     }
@@ -69,4 +79,6 @@ public class Reiziger {
                 ", geboortedatum=" + geboortedatum +
                 '}';
     }
+
+    public void setAdres(Adres adres) { this.adres = adres; }
 }
