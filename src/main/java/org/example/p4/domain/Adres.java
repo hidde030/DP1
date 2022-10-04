@@ -78,14 +78,13 @@ public class Adres {
 
     @Override
     public String toString() {
-        String s = "Adres{" +
+        return "Adres{" +
                 "adres_id=" + adres_id +
                 ", postcode='" + postcode + '\'' +
                 ", huisnummer='" + huisnummer + '\'' +
                 ", straat='" + straat + '\'' +
                 ", woonplaats='" + woonplaats + '\'' +
-                ", reiziger_id="  +
+                ", reiziger=" + reiziger +
                 '}';
-        return s;
     }
 }

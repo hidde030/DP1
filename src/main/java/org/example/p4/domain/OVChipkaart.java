@@ -7,19 +7,11 @@ public class OVChipkaart {
     private int klasse;
     private double saldo;
     private Reiziger reiziger;
-    private int reiziger_id;
 
 
     public OVChipkaart() {
     }
 
-    public OVChipkaart(int kaart_nummer, Date geldig_tot, int klasse, double saldo, int reiziger_id) {
-        this.kaart_nummer = kaart_nummer;
-        this.geldig_tot = geldig_tot;
-        this.klasse = klasse;
-        this.saldo = saldo;
-        this.reiziger_id = reiziger_id;
-    }
 
     public OVChipkaart(int kaart_nummer, Date geldig_tot, int klasse, double saldo, Reiziger reiziger) {
         this.kaart_nummer = kaart_nummer;
