@@ -1,16 +1,29 @@
-package org.example.p5;
+package  org.example.p5.domain;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Product {
     private int product_nummer;
     private String naam;
     private String beschrijving;
-    private double prijs;
+    private float prijs;
+    private List<OVChipkaart> ovChipkaartArrayList = new ArrayList<>();
 
-    public Product(int product_nummer, String naam, String beschrijving, double prijs) {
+    public Product(int product_nummer, String naam, String beschrijving, float prijs) {
         this.product_nummer = product_nummer;
         this.naam = naam;
         this.beschrijving = beschrijving;
         this.prijs = prijs;
+    }
+
+    public Product(int product_nummer, String naam, String beschrijving, float prijs, List<OVChipkaart> list){
+        this(product_nummer, naam, beschrijving, prijs);
+        this.ovChipkaartArrayList = list;
+    }
+
+    public Product() {
+
     }
 
     public int getProduct_nummer() {
@@ -37,12 +50,25 @@ public class Product {
         this.beschrijving = beschrijving;
     }
 
-    public double getPrijs() {
+    public float getPrijs() {
         return prijs;
     }
 
-    public void setPrijs(double prijs) {
+    public void setPrijs(float prijs) {
         this.prijs = prijs;
+    }
+    public List<OVChipkaart> getOvChipkaarten() {
+        return ovChipkaartArrayList;
+    }
+
+    public void setOvChipkaarten(List<OVChipkaart> ovChipkaarten) {
+        this.ovChipkaartArrayList = ovChipkaarten;
+    }
+
+    public void addOVChipkaart(OVChipkaart ovChipkaart) {
+        if (!ovChipkaartArrayList.contains(ovChipkaart)) {
+            ovChipkaartArrayList.add(ovChipkaart);
+        }
     }
 
     @Override
