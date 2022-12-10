@@ -9,8 +9,6 @@ import java.util.List;
 
 public class AdresDAOPsql implements AdresDAO {
     private Connection conn;
-    private ReizigerDAO rdao;
-
     public AdresDAOPsql(Connection connection) {
         this.conn = connection;
     }
