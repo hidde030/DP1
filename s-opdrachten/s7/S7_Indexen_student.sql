@@ -120,4 +120,19 @@ ORDER BY orders.salesperson_person_id, (orders.expected_delivery_date - orders.o
 -- S7.3.C
 --
 -- Zou je de query ook heel anders kunnen schrijven om hem te versnellen?
--- Naar een join maar ik zie niet veel veschil in snelheid
+CREATE VIEW s7_3_c AS
+SELECT o.order_id,
+       o.order_date,
+       o.salesperson_person_id                      verkoper,
+       abs(o.expected_delivery_date - o.order_date) levertijd,
+       ol.quantity
+FROM orders o
+         JOIN order_lines ol on o.order_id = ol.order_id
+         JOIN customers c on o.salesperson_person_id = c.customer_id
+WHERE quantity > 250
+  AND (SELECT avg(expected_delivery_date - order_date)
+       FROM orders o
+                JOIN customers c2 on o.salesperson_person_id = c2.customer_id
+       WHERE c.customer_id = c2.customer_id
+       GROUP BY c.customer_id) > 1.45
+ORDER BY levertijd DESC, verkoper;
